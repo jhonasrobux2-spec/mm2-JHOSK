@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J H O S K • MM2 Shop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pinkNeon: '#ff2a85',
+                        pinkLight: '#ff66b2',
+                        pinkDark: '#12080d',
+                        pinkCard: '#1a0d14',
+                        pinkBorder: '#3b1629'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0b0508;
+            color: #ffffff;
+        }
+        .glow-pink {
+            box-shadow: 0 0 25px rgba(255, 42, 133, 0.35);
+        }
+        .glow-pink-sm {
+            box-shadow: 0 0 10px rgba(255, 42, 133, 0.2);
+        }
+        .glass-card {
+            background: linear-gradient(135deg, rgba(30, 12, 23, 0.8) 0%, rgba(18, 8, 13, 0.9) 100%);
+            border: 1px solid rgba(255, 42, 133, 0.2);
+        }
+        .glass-card:hover {
+            border-color: rgba(255, 42, 133, 0.6);
+            box-shadow: 0 0 20px rgba(255, 42, 133, 0.25);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0508;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ff2a85;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-pinkNeon selection:text-white">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-[#0b0508]/80 border-b border-pinkBorder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-pinkNeon to-pinkLight p-0.5 flex items-center justify-center glow-pink-sm">
+                    <img id="storeLogo" src="logo.png" alt="J H O S K Logo" class="w-full h-full object-contain rounded-[10px]" onerror="this.onerror=null; this.src='logo.webp';">
+                </div>
+                <span class="text-2xl font-extrabold tracking-wider bg-gradient-to-r from-white via-pink-200 to-pinkNeon bg-clip-text text-transparent">
+                    J H O S K
+                </span>
+            </div>
+
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
+                <a href="#catalogo" class="hover:text-pinkNeon transition">Catálogo</a>
+                <a href="#como-funciona" class="hover:text-pinkNeon transition">Como Vender</a>
+                <a href="#suporte" class="hover:text-pinkNeon transition">Segurança</a>
+            </div>
+
+            <div>
+                <a href="SEU_LINK_DO_DISCORD_AQUI" target="_blank" class="bg-gradient-to-r from-pinkNeon to-pinkLight hover:opacity-95 text-white font-bold px-5 py-2.5 rounded-xl transition transform hover:-translate-y-0.5 glow-pink flex items-center space-x-2 text-sm">
+                    <i class="fa-brands fa-discord text-lg"></i>
+                    <span>Entrar no Discord</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-12 pb-16 overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-pinkNeon/15 via-transparent to-transparent pointer-events-none"></div>
+        <div class="max-w-5xl mx-auto px-4 text-center relative z-10">
+            <div class="inline-flex items-center space-x-2 bg-pinkNeon/10 border border-pinkNeon/30 px-4 py-1.5 rounded-full text-pinkLight text-xs font-semibold mb-6">
+                <span class="w-2 h-2 rounded-full bg-pinkNeon animate-pulse"></span>
+                <span>Atendimento Rápido via Discord • Pagamento em Robux (Gamepass & Plus)</span>
+            </div>
+            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4">
+                Venda seus itens de <span class="bg-gradient-to-r from-pinkNeon to-pinkLight bg-clip-text text-transparent">MM2</span> por
+                <span class="inline-flex items-center gap-2">
+                    <img src="robux.png" alt="Robux" class="w-7 h-7 sm:w-10 sm:h-10 inline-block">
+                    <span>Robux</span>
+                </span>
+            </h1>
+            <p class="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto mb-8">
+                Tabela oficial de preços atualizada. Pesquise o item que deseja vender e abra um ticket no nosso Discord!
+            </p>
+
+            <div class="max-w-xl mx-auto relative">
+                <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-pinkNeon/70"></i>
+                <input type="text" id="searchInput" placeholder="Pesquisar item (Ex: Bat, Harvester, Gingerscope, Luger, Candy...)" class="w-full bg-[#160a12] border border-pinkBorder rounded-2xl py-4 pl-12 pr-4 text-white placeholder-gray-500 focus:outline-none focus:border-pinkNeon focus:ring-1 focus:ring-pinkNeon transition text-sm">
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content: Catálogo -->
+    <main id="catalogo" class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24 w-full">
+        
+        <!-- Filtros por Raridade -->
+        <div class="flex flex-wrap items-center justify-center gap-2 mb-10" id="filterButtons">
+            <button data-filter="all" class="filter-btn active px-4 py-2 rounded-xl text-xs font-bold bg-pinkNeon text-white transition shadow-md shadow-pinkNeon/30">Todos</button>
+            <button data-filter="Godly" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-[#1a0d14] border border-pinkBorder text-gray-300 hover:border-pinkNeon hover:text-white transition">Godly</button>
+            <button data-filter="Chroma" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-[#1a0d14] border border-pinkBorder text-gray-300 hover:border-pinkNeon hover:text-white transition">Chroma</button>
+            <button data-filter="Classic" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-[#1a0d14] border border-pinkBorder text-gray-300 hover:border-pinkNeon hover:text-white transition">Classic</button>
+            <button data-filter="HIGH TIER" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-[#1a0d14] border border-pinkBorder text-gray-300 hover:border-pinkNeon hover:text-white transition">HIGH TIER</button>
+            <button data-filter="SETS" class="filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-[#1a0d14] border border-pinkBorder text-gray-300 hover:border-pinkNeon hover:text-white transition">SETS</button>
+        </div>
+
+        <!-- Ordenação do catálogo -->
+        <div class="flex flex-wrap items-center justify-center gap-3 mb-10">
+            <label for="sortSelect" class="text-xs font-bold text-gray-400">Ordenar:</label>
+            <div class="relative">
+                <select id="sortSelect" class="appearance-none bg-[#1a0d14] border border-pinkBorder text-gray-200 text-xs font-bold rounded-xl px-4 py-2.5 pr-10 focus:outline-none focus:border-pinkNeon focus:ring-1 focus:ring-pinkNeon transition cursor-pointer">
+                    <option value="price-desc">Maior para menor</option>
+                    <option value="price-asc">Menor para maior</option>
+                    <option value="name-asc">Alfabético (A-Z)</option>
+                </select>
+                <i class="fa-solid fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-pinkNeon text-[10px] pointer-events-none"></i>
+            </div>
+        </div>
+
+        <!-- Grid de Itens -->
+        <div id="itemsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Injetado dinamicamente via Javascript -->
+        </div>
+    </main>
+
+    <!-- Painel secreto de administrador -->
+    <div id="adminLoginModal" class="fixed inset-0 z-[80] hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="glass-card w-full max-w-sm rounded-2xl p-6 border border-pinkNeon/40 glow-pink relative">
+            <button id="closeAdminLogin" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+            <div class="text-center mb-6">
+                <div class="w-14 h-14 mx-auto rounded-2xl bg-pinkNeon/10 border border-pinkNeon/30 flex items-center justify-center text-pinkNeon text-xl mb-3"><i class="fa-solid fa-lock"></i></div>
+                <h3 class="text-xl font-bold">Área privada</h3>
+                <p class="text-xs text-gray-400 mt-1">Acesso administrativo</p>
+            </div>
+            <input id="adminPassword" type="password" placeholder="Digite a senha" class="w-full bg-[#160a12] border border-pinkBorder rounded-xl py-3 px-4 text-white placeholder-gray-500 focus:outline-none focus:border-pinkNeon mb-3">
+            <p id="adminLoginError" class="hidden text-red-400 text-xs mb-3">Senha incorreta.</p>
+            <button id="adminLoginBtn" class="w-full bg-gradient-to-r from-pinkNeon to-pinkLight text-white font-bold py-3 rounded-xl">Entrar</button>
+        </div>
+    </div>
+
+    <div id="adminPanel" class="fixed inset-0 z-[75] hidden bg-black/95 overflow-y-auto">
+        <div class="max-w-6xl mx-auto p-4 sm:p-8">
+            <div class="flex items-center justify-between gap-4 mb-8">
+                <div>
+                    <p class="text-pinkNeon text-xs font-bold uppercase tracking-widest">J H O S K • ADMIN</p>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold">Painel de controle</h2>
+                    <p class="text-gray-400 text-sm mt-1">Altere preços, categorias e crie sets. Tudo fica salvo neste navegador.</p>
+                </div>
+                <button id="closeAdminPanel" class="bg-[#1a0d14] border border-pinkBorder px-4 py-2 rounded-xl text-sm font-bold hover:border-pinkNeon">Fechar</button>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <section class="glass-card rounded-2xl p-5">
+                    <div class="flex items-center justify-between mb-4"><h3 class="font-bold text-lg">Editar item</h3><span id="adminSaveStatus" class="text-xs text-gray-500"></span></div>
+                    <input id="adminItemSearch" type="text" autocomplete="off" class="w-full bg-[#160a12] border border-pinkBorder rounded-xl py-3 px-4 text-white placeholder-gray-500 focus:outline-none focus:border-pinkNeon mb-2" placeholder="🔎 Pesquisar item pelo nome...">
+                    <select id="adminItemSelect" class="w-full bg-[#160a12] border border-pinkBorder rounded-xl py-3 px-4 text-white mb-3"></select>
+                    <div class="grid grid-cols-2 gap-3 mb-3">
+                        <input id="adminPriceInput" type="number" min="0" class="bg-[#160a12] border border-pinkBorder rounded-xl py-3 px-4 text-white" placeholder="Preço em Robux">
+                        <select id="adminCategorySelect" class="bg-[#160a12] border border-pinkBorder rounded-xl py-3 px-4 text-white">
+                            <option value="Godly">Godly</option><option value="Chroma">Chroma</option><option value="Classic">Classic</option><option value="HIGH TIER">HIGH TIER</option>
+                        </select>
+                    </div>
+                    <button id="adminSaveItem" class="w-full bg-gradient-to-r from-pinkNeon to-pinkLight text-white font-bold py-3 rounded-xl">Salvar item</button>
+                </section>
+
+                <section class="glass-card rounded-2xl p-5">
+                    <h3 class="font-bold text-lg mb-1">Criar SET</h3>
+                    <p class="text-gray-400 text-xs mb-4">Escolha quantos itens quiser. O preço será somado automaticamente.</p>
+                    <input id="setNameInput" type="text" class="w-full bg-[#160a12] border border-pinkBorder rounded-xl py-3 px-4 text-white mb-3" placeholder="Nome do SET (ex: Rainbow Duo)">
+                    <input id="setItemsSearch" type="text" autocomplete="off" class="w-full bg-[#160a12] border border-pinkBorder rounded-xl py-3 px-4 text-white placeholder-gray-500 focus:outline-none focus:border-pinkNeon mb-2" placeholder="🔎 Pesquisar itens para adicionar ao SET...">
+                    <select id="setItemsSelect" multiple size="8" class="w-full bg-[#160a12] border border-pinkBorder rounded-xl py-3 px-4 text-white mb-3"></select>
+                    <p class="text-[11px] text-gray-500 -mt-1 mb-3">Você pode pesquisar, selecionar vários itens e continuar pesquisando para adicionar mais.</p>
+                    <div class="flex items-center justify-between mb-3 px-1"><span class="text-xs text-gray-400">Preço total</span><strong id="setTotalPreview" class="text-pinkLight">0 Robux</strong></div>
+                    <button id="createSetBtn" class="w-full bg-gradient-to-r from-pinkNeon to-pinkLight text-white font-bold py-3 rounded-xl">Criar SET</button>
+                </section>
+
+                <section class="glass-card rounded-2xl p-5 lg:col-span-2">
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-4"><h3 class="font-bold text-lg">Sets criados</h3><button id="exportDataBtn" class="text-xs px-3 py-2 rounded-lg border border-pinkBorder hover:border-pinkNeon">Exportar backup</button></div>
+                    <div id="adminSetsList" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Venda -->
+    <div id="sellModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="glass-card w-full max-w-md rounded-2xl p-6 relative border border-pinkNeon/40 glow-pink">
+            <button id="closeModal" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="text-center mb-6">
+                <div id="modalItemImgContainer" class="w-24 h-24 mx-auto mb-4 rounded-xl bg-pinkDark border border-pinkBorder flex items-center justify-center p-2">
+                    <!-- Imagem do Item -->
+                </div>
+                <h3 id="modalItemName" class="text-xl font-bold text-white mb-1">Nome do Item</h3>
+                <div class="flex items-center justify-center space-x-1.5 text-pinkLight font-semibold text-sm">
+                    <span>Você recebe:</span>
+                    <span id="modalItemPrice" class="text-white font-extrabold text-lg">0</span>
+                    <img src="robux.png" alt="Robux" class="w-4 h-4 inline-block">
+                </div>
+            </div>
+
+            <div class="bg-black/40 rounded-xl p-4 mb-6 border border-pinkBorder/50 text-xs text-gray-300 space-y-2">
+                <p class="font-semibold text-pinkLight flex items-center gap-1.5"><i class="fa-solid fa-circle-info"></i> Passo a passo:</p>
+                <p>1. Clique no botão abaixo para abrir o Discord.</p>
+                <p>2. Abra um ticket no canal <strong>#vendas</strong> informando o item.</p>
+                <p>3. Receba seu pagamento em Robux com total garantia!</p>
+            </div>
+
+            <a id="modalDiscordBtn" href="SEU_LINK_DO_DISCORD_AQUI" target="_blank" class="w-full bg-gradient-to-r from-pinkNeon to-pinkLight hover:opacity-90 text-white font-bold py-3 px-4 rounded-xl transition flex items-center justify-center space-x-2 glow-pink">
+                <i class="fa-brands fa-discord text-lg"></i>
+                <span>Ir ao Discord Vender</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Como Funciona -->
+    <section id="como-funciona" class="py-16 border-t border-pinkBorder bg-[#0e060a]">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-2xl sm:text-3xl font-bold text-center mb-12">Como Funciona a Venda?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-card p-6 rounded-2xl text-center">
+                    <div class="w-12 h-12 rounded-xl bg-pinkNeon/10 border border-pinkNeon/30 text-pinkNeon flex items-center justify-center mx-auto mb-4 text-lg font-bold">1</div>
+                    <h3 class="font-bold text-lg mb-2">Escolha o Item</h3>
+                    <p class="text-gray-400 text-sm">Localize seus itens na nossa tabela e veja os valores oferecidos em Robux.</p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl text-center">
+                    <div class="w-12 h-12 rounded-xl bg-pinkNeon/10 border border-pinkNeon/30 text-pinkNeon flex items-center justify-center mx-auto mb-4 text-lg font-bold">2</div>
+                    <h3 class="font-bold text-lg mb-2">Abra um Ticket</h3>
+                    <p class="text-gray-400 text-sm">Entre no nosso servidor do Discord e converse diretamente com a nossa equipe.</p>
+                </div>
+                <div class="glass-card p-6 rounded-2xl text-center">
+                    <div class="w-12 h-12 rounded-xl bg-pinkNeon/10 border border-pinkNeon/30 text-pinkNeon flex items-center justify-center mx-auto mb-4 text-lg font-bold">3</div>
+                    <h3 class="font-bold text-lg mb-2">Receba seus Robux</h3>
+                    <p class="text-gray-400 text-sm">Efetue a entrega do item dentro do jogo e receba os Robux na sua conta.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-pinkBorder py-8 text-center text-xs text-gray-500">
+        <p>© 2026 J H O S K. Todos os direitos reservados. Não possui afiliação com Roblox Corp.</p>
+    </footer>
+
+    <!-- JavaScript do Sistema -->
+    <script>
+        const robuxIconSvg = `<img src="robux.png" alt="Robux" class="w-4 h-4 inline-block align-middle">`;
+
+        // Tabela completa de itens MM2
+        const defaultItemsData = [
+    {
+        "name": "Yellow Seer",
+        "rarity": "Godly",
+        "price": 10,
+        "filename": "Yellow_Seer"
+    },
+    {
+        "name": "Orange Seer",
+        "rarity": "Godly",
+        "price": 10,
+        "filename": "Orange_Seer"
+    },
+    {
+        "name": "Seer",
+        "rarity": "Godly",
+        "price": 10,
+        "filename": "Seer"
+    },
+    {
+        "name": "Red Seer",
+        "rarity": "Godly",
+        "price": 10,
+        "filename": "Red_Seer"
+    },
+    {
+        "name": "Purple Seer",
+        "rarity": "Godly",
+        "price": 10,
+        "filename": "Purple_Seer"
+    },
+    {
+        "name": "Blue Seer",
+        "rarity": "Godly",
+        "price": 10,
+        "filename": "Blue_Seer"
+    },
+    {
+        "name": "Cookieblade",
+        "rarity": "Godly",
+        "price": 20,
+        "filename": "Cookieblade"
+    },
+    {
+        "name": "Peppermint",
+        "rarity": "Godly",
+        "price": 20,
+        "filename": "Peppermint"
+    },
+    {
+        "name": "Winter's Edge",
+        "rarity": "Godly",
+        "price": 20,
+        "filename": "Winters_Edge"
+    },
+    {
+        "name": "Snowflake",
+        "rarity": "Godly",
+        "price": 15,
+        "filename": "Snowflake"
+    },
+    {
+        "name": "Flames",
+        "rarity": "Godly",
+        "price": 15,
+        "filename": "Flames"
+    },
+    {
+        "name": "Eggblade",
+        "rarity": "Godly",
+        "price": 18,
+        "filename": "Eggblade"
+    },
+    {
+        "name": "Xmas",
+        "rarity": "Godly",
+        "price": 25,
+        "filename": "Xmas"
+    },
+    {
+        "name": "Saw",
+        "rarity": "Godly",
+        "price": 25,
+        "filename": "Saw"
+    },
+    {
+        "name": "Pumpking",
+        "rarity": "Godly",
+        "price": 30,
+        "filename": "Pumpking"
+    },
+    {
+        "name": "Prismatic",
+        "rarity": "Godly",
+        "price": 30,
+        "filename": "Prismatic"
+    },
+    {
+        "name": "Ice Shard",
+        "rarity": "Godly",
+        "price": 30,
+        "filename": "Ice_Shard"
+    },
+    {
+        "name": "Ice Dragon",
+        "rarity": "Godly",
+        "price": 20,
+        "filename": "Ice_Dragon"
+    },
+    {
+        "name": "Ghostblade",
+        "rarity": "Godly",
+        "price": 15,
+        "filename": "Ghostblade"
+    },
+    {
+        "name": "Frostbite",
+        "rarity": "Godly",
+        "price": 25,
+        "filename": "Frostbite"
+    },
+    {
+        "name": "Eternal II",
+        "rarity": "Godly",
+        "price": 30,
+        "filename": "Eternal2"
+    },
+    {
+        "name": "Eternal",
+        "rarity": "Godly",
+        "price": 30,
+        "filename": "Eternal"
+    },
+    {
+        "name": "Boneblade",
+        "rarity": "Godly",
+        "price": 30,
+        "filename": "Boneblade"
+    },
+    {
+        "name": "Handsaw",
+        "rarity": "Godly",
+        "price": 25,
+        "filename": "Handsaw"
+    },
+    {
+        "name": "Hallow's Edge",
+        "rarity": "Godly",
+        "price": 30,
+        "filename": "Hallows_Edge"
+    },
+    {
+        "name": "Hallow's Blade",
+        "rarity": "Godly",
+        "price": 30,
+        "filename": "Hallows_Blade"
+    },
+    {
+        "name": "Eternal IV",
+        "rarity": "Godly",
+        "price": 30,
+        "filename": "Eternal4"
+    },
+    {
+        "name": "Eternal III",
+        "rarity": "Godly",
+        "price": 30,
+        "filename": "Eternal3"
+    },
+    {
+        "name": "Bioblade",
+        "rarity": "Godly",
+        "price": 30,
+        "filename": "Bioblade"
+    },
+    {
+        "name": "Tides",
+        "rarity": "Godly",
+        "price": 25,
+        "filename": "Tides"
+    },
+    {
+        "name": "Spider",
+        "rarity": "Godly",
+        "price": 30,
+        "filename": "Spider"
+    },
+    {
+        "name": "Heat",
+        "rarity": "Godly",
+        "price": 30,
+        "filename": "Heat"
+    },
+    {
+        "name": "Frostsaber",
+        "rarity": "Godly",
+        "price": 30,
+        "filename": "Frostsaber"
+    },
+    {
+        "name": "Fang",
+        "rarity": "Godly",
+        "price": 30,
+        "filename": "Fang"
+    },
+    {
+        "name": "Clockwork",
+        "rarity": "Godly",
+        "price": 30,
+        "filename": "Clockwork"
+    },
+    {
+        "name": "Chill",
+        "rarity": "Godly",
+        "price": 30,
+        "filename": "Chill"
+    },
+    {
+        "name": "Swirly Blade",
+        "rarity": "Godly",
+        "price": 35,
+        "filename": "Swirly_Blade"
+    },
+    {
+        "name": "Gingermint",
+        "rarity": "Godly",
+        "price": 35,
+        "filename": "Gingermint"
+    },
+    {
+        "name": "Battleaxe",
+        "rarity": "Godly",
+        "price": 35,
+        "filename": "Battleaxe"
+    },
+    {
+        "name": "Virtual",
+        "rarity": "Godly",
+        "price": 50,
+        "filename": "Virtual"
+    },
+    {
+        "name": "Nebula",
+        "rarity": "Godly",
+        "price": 50,
+        "filename": "Nebula"
+    },
+    {
+        "name": "Minty",
+        "rarity": "Godly",
+        "price": 40,
+        "filename": "Minty"
+    },
+    {
+        "name": "Lugercane",
+        "rarity": "Godly",
+        "price": 45,
+        "filename": "Lugercane"
+    },
+    {
+        "name": "Jinglegun",
+        "rarity": "Godly",
+        "price": 45,
+        "filename": "Jinglegun"
+    },
+    {
+        "name": "Gingerblade",
+        "rarity": "Godly",
+        "price": 50,
+        "filename": "Gingerblade"
+    },
+    {
+        "name": "Eternalcane",
+        "rarity": "Godly",
+        "price": 45,
+        "filename": "Eternalcane"
+    },
+    {
+        "name": "Deathshard",
+        "rarity": "Godly",
+        "price": 45,
+        "filename": "Deathshard"
+    },
+    {
+        "name": "Cookiecane",
+        "rarity": "Godly",
+        "price": 55,
+        "filename": "Cookiecane"
+    },
+    {
+        "name": "Vampire's Edge",
+        "rarity": "Godly",
+        "price": 55,
+        "filename": "Vampires_Edge"
+    },
+    {
+        "name": "Slasher",
+        "rarity": "Godly",
+        "price": 55,
+        "filename": "Slasher"
+    },
+    {
+        "name": "Plasmablade",
+        "rarity": "Godly",
+        "price": 50,
+        "filename": "Plasmablade"
+    },
+    {
+        "name": "Old Glory",
+        "rarity": "Godly",
+        "price": 50,
+        "filename": "Old_Glory"
+    },
+    {
+        "name": "Iceflake",
+        "rarity": "Godly",
+        "price": 40,
+        "filename": "Iceflake"
+    },
+    {
+        "name": "Gemstone",
+        "rarity": "Godly",
+        "price": 55,
+        "filename": "Gemstone"
+    },
+    {
+        "name": "Pixel",
+        "rarity": "Godly",
+        "price": 50,
+        "filename": "Pixel"
+    },
+    {
+        "name": "Ginger Luger",
+        "rarity": "Godly",
+        "price": 55,
+        "filename": "Ginger_Luger"
+    },
+    {
+        "name": "Blaster",
+        "rarity": "Godly",
+        "price": 50,
+        "filename": "Blaster"
+    },
+    {
+        "name": "Battleaxe II",
+        "rarity": "Godly",
+        "price": 50,
+        "filename": "BA2"
+    },
+    {
+        "name": "Swirly Gun",
+        "rarity": "Godly",
+        "price": 50,
+        "filename": "Swirly_Gun"
+    },
+    {
+        "name": "Plasmabeam",
+        "rarity": "Godly",
+        "price": 30,
+        "filename": "Plasmabeam"
+    },
+    {
+        "name": "Luger",
+        "rarity": "Godly",
+        "price": 55,
+        "filename": "Luger"
+    },
+    {
+        "name": "Icebeam",
+        "rarity": "Godly",
+        "price": 50,
+        "filename": "Icebeam"
+    },
+    {
+        "name": "Shark",
+        "rarity": "Godly",
+        "price": 65,
+        "filename": "Shark"
+    },
+    {
+        "name": "Nightblade",
+        "rarity": "Godly",
+        "price": 65,
+        "filename": "Nightblade"
+    },
+    {
+        "name": "Hallowgun",
+        "rarity": "Godly",
+        "price": 65,
+        "filename": "Hallowgun"
+    },
+    {
+        "name": "Laser",
+        "rarity": "Godly",
+        "price": 65,
+        "filename": "Laser"
+    },
+    {
+        "name": "Amerilaser",
+        "rarity": "Godly",
+        "price": 65,
+        "filename": "Amerilaser"
+    },
+    {
+        "name": "Green Luger",
+        "rarity": "Godly",
+        "price": 65,
+        "filename": "Green_Luger"
+    },
+    {
+        "name": "Sugar",
+        "rarity": "Godly",
+        "price": 65,
+        "filename": "Sugar"
+    },
+    {
+        "name": "Lightbringer",
+        "rarity": "Godly",
+        "price": 70,
+        "filename": "Lightbringer"
+    },
+    {
+        "name": "Makeshift",
+        "rarity": "Godly",
+        "price": 70,
+        "filename": "Makeshift"
+    },
+    {
+        "name": "Iceblaster",
+        "rarity": "Godly",
+        "price": 70,
+        "filename": "Iceblaster"
+    },
+    {
+        "name": "Elderwood Revolver",
+        "rarity": "Godly",
+        "price": 70,
+        "filename": "Elderwood_Revolver"
+    },
+    {
+        "name": "Elderwood Blade",
+        "rarity": "Godly",
+        "price": 70,
+        "filename": "Elderwood_Blade"
+    },
+    {
+        "name": "Darkbringer",
+        "rarity": "Godly",
+        "price": 70,
+        "filename": "Darkbringer"
+    },
+    {
+        "name": "Candleflame",
+        "rarity": "Godly",
+        "price": 80,
+        "filename": "Candleflame"
+    },
+    {
+        "name": "Spectre",
+        "rarity": "Godly",
+        "price": 75,
+        "filename": "Spectre"
+    },
+    {
+        "name": "Phantom",
+        "rarity": "Godly",
+        "price": 75,
+        "filename": "Phantom"
+    },
+    {
+        "name": "Red Luger",
+        "rarity": "Godly",
+        "price": 75,
+        "filename": "Red_Luger"
+    },
+    {
+        "name": "Heartblade",
+        "rarity": "Godly",
+        "price": 180,
+        "filename": "Heartblade"
+    },
+    {
+        "name": "Ornament",
+        "rarity": "Godly",
+        "price": 185,
+        "filename": "Ornament"
+    },
+    {
+        "name": "Pearl",
+        "rarity": "Godly",
+        "price": 195,
+        "filename": "Pearl"
+    },
+    {
+        "name": "Candy",
+        "rarity": "Godly",
+        "price": 200,
+        "filename": "Candy"
+    },
+    {
+        "name": "Pearlshine",
+        "rarity": "Godly",
+        "price": 195,
+        "filename": "Pearlshine"
+    },
+    {
+        "name": "Sands",
+        "rarity": "Godly",
+        "price": 210,
+        "filename": "Sands"
+    },
+    {
+        "name": "Beachy",
+        "rarity": "Godly",
+        "price": 210,
+        "filename": "Beachy"
+    },
+    {
+        "name": "Bat",
+        "rarity": "Godly",
+        "price": 230,
+        "filename": "Bat"
+    },
+    {
+        "name": "Australis",
+        "rarity": "Godly",
+        "price": 270,
+        "filename": "Australis"
+    },
+    {
+        "name": "Borealis",
+        "rarity": "Godly",
+        "price": 270,
+        "filename": "Borealis"
+    },
+    {
+        "name": "Sweet",
+        "rarity": "Godly",
+        "price": 295,
+        "filename": "Sweet"
+    },
+    {
+        "name": "Treat",
+        "rarity": "Godly",
+        "price": 295,
+        "filename": "Treat"
+    },
+    {
+        "name": "Icecream",
+        "rarity": "Godly",
+        "price": 295,
+        "filename": "Icecream"
+    },
+    {
+        "name": "Watergun",
+        "rarity": "Godly",
+        "price": 300,
+        "filename": "Watergun"
+    },
+    {
+        "name": "Snow Dagger",
+        "rarity": "Godly",
+        "price": 300,
+        "filename": "Snow_Dagger"
+    },
+    {
+        "name": "Flowerwood",
+        "rarity": "Godly",
+        "price": 450,
+        "filename": "Flowerwood"
+    },
+    {
+        "name": "Flowerwood Gun",
+        "rarity": "Godly",
+        "price": 450,
+        "filename": "Flowerwood_Gun"
+    },
+    {
+        "name": "Waves",
+        "rarity": "Godly",
+        "price": 450,
+        "filename": "Waves"
+    },
+    {
+        "name": "Ocean",
+        "rarity": "Godly",
+        "price": 450,
+        "filename": "Ocean"
+    },
+    {
+        "name": "Snowstorm",
+        "rarity": "Godly",
+        "price": 500,
+        "filename": "Snowstorm"
+    },
+    {
+        "name": "Blizzard",
+        "rarity": "Godly",
+        "price": 500,
+        "filename": "Blizzard"
+    },
+    {
+        "name": "Heart Wand",
+        "rarity": "Godly",
+        "price": 600,
+        "filename": "Heart_Wand"
+    },
+    {
+        "name": "Bloom",
+        "rarity": "Godly",
+        "price": 700,
+        "filename": "Bloom"
+    },
+    {
+        "name": "Xenoshot",
+        "rarity": "Godly",
+        "price": 700,
+        "filename": "Xenoshot"
+    },
+    {
+        "name": "Xenoknife",
+        "rarity": "Godly",
+        "price": 700,
+        "filename": "Xenoknife"
+    },
+    {
+        "name": "Rainbow",
+        "rarity": "Godly",
+        "price": 700,
+        "filename": "Rainbow_Knife"
+    },
+    {
+        "name": "Flora",
+        "rarity": "Godly",
+        "price": 700,
+        "filename": "Flora"
+    },
+    {
+        "name": "Rainbow Gun",
+        "rarity": "Godly",
+        "price": 700,
+        "filename": "Rainbow_Gun"
+    },
+    {
+        "name": "Sunset",
+        "rarity": "Godly",
+        "price": 775,
+        "filename": "Sunset"
+    },
+    {
+        "name": "Spirit",
+        "rarity": "Godly",
+        "price": 800,
+        "filename": "Spirit"
+    },
+    {
+        "name": "Soul",
+        "rarity": "Godly",
+        "price": 810,
+        "filename": "Soul"
+    },
+    {
+        "name": "Snowcannon",
+        "rarity": "Godly",
+        "price": 825,
+        "filename": "Snowcannon"
+    },
+    {
+        "name": "Bauble",
+        "rarity": "Godly",
+        "price": 830,
+        "filename": "Bauble"
+    },
+    {
+        "name": "Sunrise",
+        "rarity": "Godly",
+        "price": 1375,
+        "filename": "Sunrise"
+    },
+    {
+        "name": "Sakura",
+        "rarity": "Godly",
+        "price": 1375,
+        "filename": "Sakura"
+    },
+    {
+        "name": "Blossom",
+        "rarity": "Godly",
+        "price": 1375,
+        "filename": "Blossom"
+    },
+    {
+        "name": "Darksword",
+        "rarity": "Godly",
+        "price": 1800,
+        "filename": "Darksword"
+    },
+    {
+        "name": "Raygun",
+        "rarity": "Godly",
+        "price": 1800,
+        "filename": "Raygun"
+    },
+    {
+        "name": "Darkshot",
+        "rarity": "Godly",
+        "price": 1800,
+        "filename": "Darkshot"
+    },
+    {
+        "name": "Vampire's Gun",
+        "rarity": "Godly",
+        "price": 1800,
+        "filename": "Vampires_Gun"
+    },
+    {
+        "name": "Turkey",
+        "rarity": "Godly",
+        "price": 1900,
+        "filename": "Turkey"
+    },
+    {
+        "name": "Alienbeam",
+        "rarity": "Godly",
+        "price": 1950,
+        "filename": "Alienbeam"
+    },
+    {
+        "name": "Constellation",
+        "rarity": "Godly",
+        "price": 3400,
+        "filename": "Constellation"
+    },
+    {
+        "name": "Evergreen",
+        "rarity": "Godly",
+        "price": 3400,
+        "filename": "Evergreen"
+    },
+    {
+        "name": "Evergun",
+        "rarity": "Godly",
+        "price": 3600,
+        "filename": "Evergun"
+    },
+    {
+        "name": "Icewing",
+        "rarity": "Godly",
+        "price": 65,
+        "filename": "Icewing"
+    },
+    {
+        "name": "Logchopper",
+        "rarity": "Godly",
+        "price": 35,
+        "filename": "Logchopper"
+    },
+    {
+        "name": "Hallowscythe",
+        "rarity": "Godly",
+        "price": 65,
+        "filename": "Hallowscythe"
+    },
+    {
+        "name": "Swirly Axe",
+        "rarity": "Godly",
+        "price": 70,
+        "filename": "Swirly_Axe"
+    },
+    {
+        "name": "Elderwood Scythe",
+        "rarity": "Godly",
+        "price": 70,
+        "filename": "Elderwood_Scythe"
+    },
+    {
+        "name": "Batwing",
+        "rarity": "Godly",
+        "price": 100,
+        "filename": "Batwing"
+    },
+    {
+        "name": "Icebreaker",
+        "rarity": "Godly",
+        "price": 180,
+        "filename": "Icebreaker"
+    },
+    {
+        "name": "Icepiercer",
+        "rarity": "Godly",
+        "price": 350,
+        "filename": "Icepiercer"
+    },
+    {
+        "name": "Harvester",
+        "rarity": "Godly",
+        "price": 450,
+        "filename": "Harvester"
+    },
+    {
+        "name": "Vampire's Axe",
+        "rarity": "Godly",
+        "price": 1750,
+        "filename": "Vampires_Axe"
+    },
+    {
+        "name": "Celestial",
+        "rarity": "Godly",
+        "price": 2050,
+        "filename": "Celestial"
+    },
+    {
+        "name": "Chroma Boneblade",
+        "rarity": "Chroma",
+        "price": 45,
+        "filename": "CBB"
+    },
+    {
+        "name": "Chroma Saw",
+        "rarity": "Chroma",
+        "price": 55,
+        "filename": "CSaw"
+    },
+    {
+        "name": "Chroma Tides",
+        "rarity": "Chroma",
+        "price": 55,
+        "filename": "CTides"
+    },
+    {
+        "name": "Chroma Gingerblade",
+        "rarity": "Chroma",
+        "price": 60,
+        "filename": "CGB"
+    },
+    {
+        "name": "Chroma Seer",
+        "rarity": "Chroma",
+        "price": 65,
+        "filename": "CSeer"
+    },
+    {
+        "name": "Chroma Heat",
+        "rarity": "Chroma",
+        "price": 65,
+        "filename": "CHeat"
+    },
+    {
+        "name": "Chroma Slasher",
+        "rarity": "Chroma",
+        "price": 60,
+        "filename": "CSlasher"
+    },
+    {
+        "name": "Chroma Shark",
+        "rarity": "Chroma",
+        "price": 70,
+        "filename": "CShark"
+    },
+    {
+        "name": "Chroma Gemstone",
+        "rarity": "Chroma",
+        "price": 65,
+        "filename": "CGem"
+    },
+    {
+        "name": "Chroma Fang",
+        "rarity": "Chroma",
+        "price": 65,
+        "filename": "CFang"
+    },
+    {
+        "name": "Chroma Cookiecane",
+        "rarity": "Chroma",
+        "price": 70,
+        "filename": "CCC"
+    },
+    {
+        "name": "Chroma Swirly Gun",
+        "rarity": "Chroma",
+        "price": 75,
+        "filename": "CSG"
+    },
+    {
+        "name": "Chroma Deathshard",
+        "rarity": "Chroma",
+        "price": 75,
+        "filename": "CDS"
+    },
+    {
+        "name": "C. Elderwood Blade",
+        "rarity": "Chroma",
+        "price": 80,
+        "filename": "CEB"
+    },
+    {
+        "name": "Chroma Laser",
+        "rarity": "Chroma",
+        "price": 85,
+        "filename": "CLaser"
+    },
+    {
+        "name": "Chroma Candleflame",
+        "rarity": "Chroma",
+        "price": 85,
+        "filename": "CCF"
+    },
+    {
+        "name": "Chroma Luger",
+        "rarity": "Chroma",
+        "price": 100,
+        "filename": "CLuger"
+    },
+    {
+        "name": "Chroma Lightbringer",
+        "rarity": "Chroma",
+        "price": 140,
+        "filename": "CLB"
+    },
+    {
+        "name": "Chroma Darkbringer",
+        "rarity": "Chroma",
+        "price": 140,
+        "filename": "CDB"
+    }
+];
+
+        const ADMIN_PASSWORD = 'JHOSKADMIN';
+        const STORAGE_ITEMS = 'jhosk_items_v1';
+        const STORAGE_SETS = 'jhosk_sets_v1';
+        let itemsData = JSON.parse(localStorage.getItem(STORAGE_ITEMS) || 'null') || defaultItemsData.map(item => ({...item}));
+        let setsData = JSON.parse(localStorage.getItem(STORAGE_SETS) || '[]');
+
+        const itemsGrid = document.getElementById('itemsGrid');
+        const searchInput = document.getElementById('searchInput');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        let currentFilter = 'all';
+        let currentSort = 'price-desc';
+
+        // Função de fallback de imagem para procurar WebP, PNG, JPG ou gerar capa padrão
+        window.handleImgError = function(img, filename) {
+            if (!img.dataset.step) {
+                img.dataset.step = "1";
+                img.src = `imagens dos itens do mm2/${filename}.png`;
+            } else if (img.dataset.step === "1") {
+                img.dataset.step = "2";
+                img.src = `imagens dos itens do mm2/${filename}.jpg`;
+            } else {
+                img.onerror = null;
+                // Exibe ícone decorativo se a imagem não existir na pasta
+                img.parentElement.innerHTML = `<div class="flex flex-col items-center justify-center text-pinkNeon/60 h-full"><i class="fa-solid fa-wand-magic-sparkles text-3xl mb-1"></i><span class="text-[10px] text-gray-500 font-bold">${filename}</span></div>`;
+            }
+        };
+
+        function imageMarkup(filename, extraClass = '') {
+            return `<img src="imagens dos itens do mm2/${filename}.png" alt="Item" class="${extraClass} max-h-full max-w-full object-contain relative z-10 drop-shadow-md" onerror="handleImgError(this, '${filename}')">`;
+        }
+
+        function renderItems(filter = 'all', search = '') {
+            itemsGrid.innerHTML = '';
+            const normalFiltered = itemsData.filter(item => {
+                const matchesFilter = filter === 'all' || item.rarity === filter;
+                return matchesFilter && item.name.toLowerCase().includes(search.toLowerCase());
+            });
+            const filteredSets = setsData.filter(set => {
+                return filter === 'SETS' && set.name.toLowerCase().includes(search.toLowerCase());
+            }).map(set => ({...set, rarity:'SETS'}));
+            let filtered = [...normalFiltered, ...filteredSets];
+
+            filtered.sort((a, b) => {
+                if (currentSort === 'price-asc') return a.price - b.price;
+                if (currentSort === 'name-asc') return a.name.localeCompare(b.name, 'pt-BR', { sensitivity: 'base' });
+                return b.price - a.price;
+            });
+
+            if (filtered.length === 0) {
+                itemsGrid.innerHTML = `<div class="col-span-full text-center py-12 text-gray-400"><i class="fa-solid fa-box-open text-4xl mb-3 text-pinkNeon/50"></i><p>Nenhum item encontrado.</p></div>`;
+                return;
+            }
+
+            filtered.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'glass-card rounded-2xl p-4 flex flex-col justify-between transition duration-300 group';
+                const isSet = item.rarity === 'SETS';
+                const images = isSet ? item.items : [item];
+                const imagesHtml = images.map(part => `<div style="flex:1 1 ${100/Math.min(images.length,4)}%;" class="h-28 flex items-center justify-center p-1 min-w-0">${imageMarkup(part.filename)}</div>`).join('');
+                const imageArea = isSet ? `<div class="w-full h-32 flex items-center justify-center gap-1 mb-2 relative">${imagesHtml}</div>` : `<div class="w-full h-32 flex items-center justify-center p-2 mb-2 relative"><div class="absolute inset-0 bg-pinkNeon/5 rounded-xl filter blur-md group-hover:bg-pinkNeon/15 transition"></div>${imageMarkup(item.filename)}</div>`;
+                card.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-start mb-2"><span class="px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider bg-pinkNeon/15 text-pinkLight border border-pinkNeon/30">${item.rarity}</span></div>
+                        ${imageArea}
+                        <h3 class="font-bold text-white text-base mb-1 truncate">${item.name}</h3>
+                        ${isSet ? `<p class="text-[10px] text-gray-500 mb-1 truncate">${item.items.map(x=>x.name).join(' + ')}</p>` : ''}
+                    </div>
+                    <div class="pt-3 border-t border-pinkBorder/40 flex items-center justify-between mt-2">
+                        <div><span class="text-[10px] text-gray-400 block uppercase">Você recebe</span><div class="flex items-center space-x-1.5"><span class="font-extrabold text-pinkLight text-lg">${item.price.toLocaleString()}</span>${robuxIconSvg}</div></div>
+                        <button onclick="openSellModal('${String(item.name).replace(/'/g,"\\'")}', ${item.price}, '${item.filename || ''}', ${isSet})" class="bg-pinkNeon hover:bg-pink-600 text-white font-bold px-3 py-2 rounded-xl text-xs transition shadow-sm shadow-pinkNeon/40">Vender</button>
+                    </div>`;
+                itemsGrid.appendChild(card);
+            });
+        }
+
+        // Eventos dos Filtros
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => {
+                    b.classList.remove('bg-pinkNeon', 'text-white', 'shadow-md', 'shadow-pinkNeon/30');
+                    b.classList.add('bg-[#1a0d14]', 'border', 'border-pinkBorder', 'text-gray-300');
+                });
+                btn.classList.remove('bg-[#1a0d14]', 'border', 'border-pinkBorder', 'text-gray-300');
+                btn.classList.add('bg-pinkNeon', 'text-white', 'shadow-md', 'shadow-pinkNeon/30');
+                
+                currentFilter = btn.getAttribute('data-filter');
+                renderItems(currentFilter, searchInput.value);
+            });
+        });
+
+        // Evento de Pesquisa
+        searchInput.addEventListener('input', (e) => {
+            renderItems(currentFilter, e.target.value);
+        });
+
+        // Evento da Ordenação
+        const sortSelect = document.getElementById('sortSelect');
+        sortSelect.addEventListener('change', (e) => {
+            currentSort = e.target.value;
+            renderItems(currentFilter, searchInput.value);
+        });
+
+        // Lógica do Modal
+        const sellModal = document.getElementById('sellModal');
+        const closeModal = document.getElementById('closeModal');
+        const modalItemName = document.getElementById('modalItemName');
+        const modalItemPrice = document.getElementById('modalItemPrice');
+        const modalItemImgContainer = document.getElementById('modalItemImgContainer');
+
+        window.openSellModal = function(name, price, filename, isSet = false) {
+            modalItemName.textContent = name;
+            modalItemPrice.textContent = price.toLocaleString();
+            modalItemImgContainer.innerHTML = isSet ? `<div class="flex gap-1 w-full h-full items-center justify-center">${(setsData.find(s=>s.name===name)?.items || []).map(x=>`<img src="imagens dos itens do mm2/${x.filename}.png" class="max-h-full max-w-[45%] object-contain">`).join('')}</div>` : `<img src="imagens dos itens do mm2/${filename}.png" class="max-h-full max-w-full object-contain" onerror="handleImgError(this, '${filename}')">`;
+            sellModal.classList.remove('hidden');
+        };
+
+        closeModal.addEventListener('click', () => sellModal.classList.add('hidden'));
+        sellModal.addEventListener('click', (e) => {
+            if (e.target === sellModal) sellModal.classList.add('hidden');
+        });
+
+
+        // ==================== PAINEL SECRETO J H O S K ====================
+        const adminLoginModal = document.getElementById('adminLoginModal');
+        const adminPanel = document.getElementById('adminPanel');
+        const adminPassword = document.getElementById('adminPassword');
+        const adminLoginError = document.getElementById('adminLoginError');
+        const adminItemSelect = document.getElementById('adminItemSelect');
+        const adminItemSearch = document.getElementById('adminItemSearch');
+        const adminPriceInput = document.getElementById('adminPriceInput');
+        const adminCategorySelect = document.getElementById('adminCategorySelect');
+        const setItemsSelect = document.getElementById('setItemsSelect');
+        const setItemsSearch = document.getElementById('setItemsSearch');
+        const setTotalPreview = document.getElementById('setTotalPreview');
+        const adminSetsList = document.getElementById('adminSetsList');
+
+        function saveCatalog() {
+            localStorage.setItem(STORAGE_ITEMS, JSON.stringify(itemsData));
+            localStorage.setItem(STORAGE_SETS, JSON.stringify(setsData));
+            document.getElementById('adminSaveStatus').textContent = 'Salvo ✓';
+            setTimeout(()=>document.getElementById('adminSaveStatus').textContent='',1800);
+            renderItems(currentFilter, searchInput.value);
+        }
+        function buildAdminItemOptions(searchText = '') {
+            const term = String(searchText || '').trim().toLowerCase();
+            const currentValue = adminItemSelect.value;
+            adminItemSelect.innerHTML = itemsData
+                .map((item,i)=>({item,i}))
+                .filter(({item}) => !term || item.name.toLowerCase().includes(term))
+                .map(({item,i})=>`<option value="${i}">${item.name} — ${Number(item.price || 0).toLocaleString()} Robux</option>`)
+                .join('');
+            if ([...adminItemSelect.options].some(o => o.value === currentValue)) adminItemSelect.value = currentValue;
+            else if (adminItemSelect.options.length) adminItemSelect.selectedIndex = 0;
+        }
+
+        function buildSetItemOptions(searchText = '', preserveSelected = true) {
+            const term = String(searchText || '').trim().toLowerCase();
+            const selectedValues = new Set(preserveSelected ? [...setItemsSelect.selectedOptions].map(o => o.value) : []);
+            setItemsSelect.innerHTML = itemsData
+                .map((item,i)=>({item,i}))
+                .filter(({item}) => !term || item.name.toLowerCase().includes(term))
+                .map(({item,i})=>`<option value="${i}" ${selectedValues.has(String(i)) ? 'selected' : ''}>${item.name} — ${Number(item.price || 0).toLocaleString()} Robux</option>`)
+                .join('');
+        }
+
+        function populateAdmin() {
+            buildAdminItemOptions(adminItemSearch.value);
+            buildSetItemOptions(setItemsSearch.value, true);
+            loadAdminItem(); renderAdminSets(); updateSetTotal();
+        }
+        function loadAdminItem() {
+            const item = itemsData[Number(adminItemSelect.value)];
+            if (!item) return;
+            adminPriceInput.value = item.price;
+            adminCategorySelect.value = ['Godly','Chroma','Classic','HIGH TIER'].includes(item.rarity) ? item.rarity : 'Godly';
+        }
+        function updateSetTotal() {
+            const selected = [...setItemsSelect.selectedOptions].map(o=>itemsData[Number(o.value)]).filter(Boolean);
+            setTotalPreview.textContent = selected.reduce((sum,x)=>sum+Number(x.price||0),0).toLocaleString() + ' Robux';
+        }
+        function renderAdminSets() {
+            adminSetsList.innerHTML = setsData.length ? setsData.map((set,i)=>`<div class="bg-black/30 border border-pinkBorder rounded-xl p-3 flex items-center justify-between gap-3"><div><strong class="text-sm">${set.name}</strong><p class="text-[11px] text-gray-500">${set.items.map(x=>x.name).join(' + ')}</p></div><div class="flex items-center gap-2"><span class="text-pinkLight font-bold text-sm">${set.price.toLocaleString()} R$</span><button onclick="deleteSet(${i})" class="text-red-400 hover:text-red-300 p-2"><i class="fa-solid fa-trash"></i></button></div></div>`).join('') : '<p class="text-gray-500 text-sm">Nenhum SET criado.</p>';
+        }
+        window.deleteSet = function(index) { if(confirm('Excluir este SET?')) { setsData.splice(index,1); saveCatalog(); renderAdminSets(); } };
+
+        document.getElementById('storeLogo').addEventListener('click', (()=>{ let clicks=0, timer; return ()=>{ clicks++; clearTimeout(timer); timer=setTimeout(()=>clicks=0,1200); if(clicks>=7){ clicks=0; adminLoginModal.classList.remove('hidden'); adminPassword.focus(); } }; })());
+        document.getElementById('closeAdminLogin').onclick=()=>adminLoginModal.classList.add('hidden');
+        document.getElementById('adminLoginBtn').onclick=()=>{
+            if(adminPassword.value === ADMIN_PASSWORD){ adminPassword.value=''; adminLoginError.classList.add('hidden'); adminLoginModal.classList.add('hidden'); adminPanel.classList.remove('hidden'); populateAdmin(); }
+            else adminLoginError.classList.remove('hidden');
+        };
+        adminPassword.addEventListener('keydown',e=>{if(e.key==='Enter') document.getElementById('adminLoginBtn').click();});
+        document.getElementById('closeAdminPanel').onclick=()=>adminPanel.classList.add('hidden');
+        adminItemSelect.addEventListener('change',loadAdminItem);
+        adminItemSearch.addEventListener('input', () => {
+            buildAdminItemOptions(adminItemSearch.value);
+            loadAdminItem();
+        });
+        setItemsSearch.addEventListener('input', () => {
+            buildSetItemOptions(setItemsSearch.value, true);
+            updateSetTotal();
+        });
+        document.getElementById('adminSaveItem').onclick=()=>{
+            const item=itemsData[Number(adminItemSelect.value)]; if(!item) return;
+            item.price=Math.max(0,Number(adminPriceInput.value)||0); item.rarity=adminCategorySelect.value; saveCatalog(); populateAdmin();
+        };
+        setItemsSelect.addEventListener('change',updateSetTotal);
+        document.getElementById('createSetBtn').onclick=()=>{
+            const name=document.getElementById('setNameInput').value.trim();
+            const selected=[...setItemsSelect.selectedOptions].map(o=>itemsData[Number(o.value)]).filter(Boolean);
+            if(!name || selected.length<2){ alert('Digite o nome e selecione pelo menos 2 itens.'); return; }
+            if(setsData.some(s=>s.name.toLowerCase()===name.toLowerCase())){ alert('Já existe um SET com esse nome.'); return; }
+            setsData.push({id:Date.now(),name,rarity:'SETS',price:selected.reduce((sum,x)=>sum+Number(x.price||0),0),items:selected.map(x=>({name:x.name,filename:x.filename,price:x.price}))});
+            document.getElementById('setNameInput').value=''; [...setItemsSelect.options].forEach(o=>o.selected=false); saveCatalog(); populateAdmin();
+        };
+        document.getElementById('exportDataBtn').onclick=()=>{
+            const blob=new Blob([JSON.stringify({items:itemsData,sets:setsData},null,2)],{type:'application/json'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='JHOSK-backup.json'; a.click(); URL.revokeObjectURL(a.href);
+        };
+
+        // Renderização inicial
+        renderItems();
+    </script>
+</body>
+</html>
